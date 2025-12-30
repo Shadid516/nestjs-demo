@@ -4,11 +4,14 @@ import { AuthorsService } from '../authors/authors.service';
 @Injectable()
 export class BooksService {
   private books = [
-    // TODO: add some sample books here
-    { id: 1, title: 'Sample Book 1', authorId: 1 },
-    { id: 2, title: 'Sample Book 2', authorId: 2 },
-    { id: 3, title: 'Sample Book 3', authorId: 1 },
-    { id: 4, title: 'Sample Book 4', authorId: 3 },
+    { id: 1, title: 'The Economics of Shawarma', authorId: 1 },
+    { id: 2, title: 'A Guide to Beirut', authorId: 2 },
+    {
+      id: 3,
+      title: 'The Origins of "Put of the Fries in the Bag"',
+      authorId: 1,
+    },
+    { id: 4, title: 'Zany Book Title 4', authorId: 3 },
   ];
 
   findAll() {

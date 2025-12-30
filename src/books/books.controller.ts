@@ -13,7 +13,6 @@ import { BooksService } from './books.service';
 export class BooksController {
   constructor(private readonly booksService: BooksService) {}
 
-  // TODO: Implement book controller methods
   @Get()
   findAll() {
     return { books: this.booksService.findAll() };
