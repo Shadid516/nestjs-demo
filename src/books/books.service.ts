@@ -4,14 +4,15 @@ import { AuthorsService } from '../authors/authors.service';
 @Injectable()
 export class BooksService {
   private books = [
-    { id: 1, title: 'The Economics of Shawarma', authorId: 1 },
-    { id: 2, title: 'A Guide to Beirut', authorId: 2 },
+    { id: 1, title: 'The Economics of Shawarma', authorId: 1, publisherId: 2 },
+    { id: 2, title: 'A Guide to Beirut', authorId: 2, publisherId: 2 },
     {
       id: 3,
       title: 'The Origins of "Put of the Fries in the Bag"',
       authorId: 1,
+      publisherId: 2,
     },
-    { id: 4, title: 'Zany Book Title 4', authorId: 3 },
+    { id: 4, title: 'Zany Book Title 4', authorId: 3, publisherId: 2 },
   ];
 
   findAll() {
@@ -25,7 +26,7 @@ export class BooksService {
     }
     return book;
   }
-  create(book: { title: string; authorId: number }) {
+  create(book: { title: string; authorId: number; publisherId: number }) {
     const newBook = {
       id: this.books[this.books.length - 1].id + 1,
       ...book, // Revise how destructuring is done here
@@ -33,7 +34,10 @@ export class BooksService {
     this.books.push(newBook);
     return newBook;
   }
-  update(id: number, book: { title?: string; authorId?: number }) {
+  update(
+    id: number,
+    book: { title?: string; authorId?: number; publisherId?: number },
+  ) {
     const bookIndex = this.books.findIndex((book) => book.id === id);
 
     if (bookIndex === -1) {
@@ -54,5 +58,5 @@ export class BooksService {
     return bookIndex;
   }
 
-  constructor(private readonly authorsService: AuthorsService) {} // What does this do?
+  constructor(private readonly authorsService: AuthorsService) {} // Inject AuthorsService for includeAuthor parameter.
 }
