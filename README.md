@@ -64,4 +64,4 @@ nest generate controller some-module-name
 Hint: you'll need to make use of the `@Query` decorator, I've already injected the AuthorsService into the BooksService for you to make this easier.
 
 **Extra Bonus Points:** use [pipes](https://docs.nestjs.com/pipes) to validate id params as integers
-**More Extra Bonus Points:** add swagger to your endpoints - see [here](https://docs.nestjs.com/openapi/introduction) for more info
+**More Extra Bonus Points:** add swagger to your endpoints - see [NestJS openapi intro](https://docs.nestjs.com/openapi/introduction) for more info
