@@ -4,15 +4,34 @@ import { AuthorsService } from '../authors/authors.service';
 @Injectable()
 export class BooksService {
   private books = [
-    { id: 1, title: 'The Economics of Shawarma', authorId: 1, publisherId: 2 },
-    { id: 2, title: 'A Guide to Beirut', authorId: 2, publisherId: 2 },
+    {
+      id: 1,
+      title: 'The Economics of Shawarma',
+      authorId: 1,
+      publisherId: 2,
+      genreId: [1, 2],
+    },
+    {
+      id: 2,
+      title: 'A Guide to Beirut',
+      authorId: 2,
+      publisherId: 2,
+      genreId: [1, 4],
+    },
     {
       id: 3,
       title: 'The Origins of "Put of the Fries in the Bag"',
       authorId: 1,
       publisherId: 2,
+      genreId: [3],
     },
-    { id: 4, title: 'Zany Book Title 4', authorId: 3, publisherId: 2 },
+    {
+      id: 4,
+      title: 'Zany Book Title 3',
+      authorId: 3,
+      publisherId: 2,
+      genreId: [1, 3],
+    },
   ];
 
   findAll() {
@@ -26,7 +45,12 @@ export class BooksService {
     }
     return book;
   }
-  create(book: { title: string; authorId: number; publisherId: number }) {
+  create(book: {
+    title: string;
+    authorId: number;
+    publisherId: number;
+    genreId: number[];
+  }) {
     const newBook = {
       id: this.books[this.books.length - 1].id + 1,
       ...book, // Revise how destructuring is done here
@@ -36,7 +60,12 @@ export class BooksService {
   }
   update(
     id: number,
-    book: { title?: string; authorId?: number; publisherId?: number },
+    book: {
+      title?: string;
+      authorId?: number;
+      publisherId?: number;
+      genreId?: number[];
+    },
   ) {
     const bookIndex = this.books.findIndex((book) => book.id === id);
 
